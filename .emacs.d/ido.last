@@ -1,0 +1,38 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/jpark314/Dropbox/Project/" . "Python/")
+ ("/Users/jpark314/Dropbox/Project/Python/" . "Backend/")
+ ("/Users/jpark314/Dropbox/" . "Project/")
+ ("/Users/jpark314/" . "Dropbox/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/jpark314/"
+ "/Users/jpark314/Dropbox/Project/Python/Backend/"
+ "/Users/jpark314/Dropbox/Project/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "people.sql"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/jpark314/" (23030 64868 282650 303000) ".viminfo.tmp" ".conda/" ".zlogin" ".viminfo" ".bash_history" ".byobu/" ".viminfz.tmp" ".aws/" ".cache/" ".python_history" "Downloads/" ".rediscli_history" ".oh-my-zsh/" "metastore_db/" ".Xauthority" ".gem/" ".bash_profile" "NetBeansProjects/" ".m2/" ".vscode/" ".mono/" ".rstudio-desktop/" ".hushlogin" "Documents/" ".npm/" ".scala_history" "IdeaProjects/" ".Trash/" "Dropbox/" ".zsh-update" ".gradle/" ".profile" "Applications/" ".dotnet/" ".vimrc" "Movies/" ".ssh/" ".pip/" ".anaconda/" ".ansible/" ".cisco/" ".eaglerc" "package-lock.json" ".dropbox/" "Public/" ".matlab/" ".bash_sessions/" ".cups/" ".android/" ".octave_hist" ".node_repl_history" ".emacs.d/" ".IdentityService/" ".oracle_jre_usage/" "AWS_MAC.pem" ".mkshrc" ".matplotlib/" "eclipse-workspace/" "Library/" "Desktop/" ".rvm/" ".ipython/" ".p2/" ".zsh_history" ".zcompdump-Park’s MacBook Pro-5.3.1" "Qt/" ".rnd" ".zcompdump-Park’s MacBook Pro-5.2" ".bundle/" ".saves/" "node_modules/" ".ipfs/" ".zprofile" ".atom/" ".zcompdump-MBP-5.2" ".pylint.d/" ".irssi/" "Pictures/" "Projects/" ".local/" ".templateengine/" ".ServiceHub/" ".zcompdump-MBP-5.3" ".zshrc" ".zshrc.pre-oh-my-zsh" ".bashrc" ".subversion/" ".vagrant.d/" "derby.log" ".tooling/" ".CFUserTextEncoding" "VirtualBox VMs/" ".gnupg/" "eclipse/" ".DS_Store" ".Genymobile/" ".vim/" ".condarc" ".fonts" "Music/" ".config/" ".eclipse/" ".Rhistory" "anaconda/" "../" "./")
+
+ ("/Users/jpark314/Dropbox/Project/Python/Backend/" (22962 5686 0 0) "people.sql" "../" "./")
+
+ ("/Users/jpark314/Dropbox/Project/Python/" (22962 5636 0 0) "Work.py" "webcrawler/" "webCralwer.py" "webApplication/" "text.csv" "testFlask.py" "test.py" "sys.py" "response.txt" "python.py" "practiceProblems/" "Practice/" "prac.py" "module1.py" "main.py" "MachineLearning/" "Lenna.png" "Keras/" "JavaScript/" "ImageParser/" "flask.py" "Flask/" "First.py" "dQKdc1Nb.jpg" "Django/" "destiny-logo-topic_0.png" "Currency/" "Course-Finder/" "Backend/" ".idea/" ".destinyRaid.py.swp" "../" "./")
+
+ ("/Users/jpark314/Dropbox/Project/" (22961 64417 0 0) "website/" "Web/" "Unassigned/" "test.java" "source.html" "ruby/" "rails/" "Python/" "PracticeCode/" "practice.html" "php/" "Personal/" "Perl/" "Other/" "node/" "NLP/" "mysql/" "Map-Motion-gh-pages.zip" "Likelion/" "Lenna.png" "Jsp/" "js/" "Java/" "Interesting/" "ImageParsing/" "Hackathon/" "getPage.py" "funstuff/" "Frest/" "FirstApp/" "devops/" "Data-Structures-master.zip" "CTF/" "CppCoreGuidelines/" "cpp/" "C/" "Algorithms-master.zip" "alggago/" "ACM_Hack/" ".vscode/" ".git/" "../" "./")
+
+ ("/Users/jpark314/Dropbox/" (22956 20980 0 0) "ㅅㅇ2.txt" "ㅅㅇ.txt" "ㅅㅂ.txt" "하고싶은일들.txt" "무인 라디오 녹음기 만들기.pdf" "레쥬메업데이트.txt" "레쥬메.txt" "능력있는 개발자는 어떻게 알아 볼 수 있나-.pdf" "계획.txt" "X1Initiative/" "workingProjects/" "VISA_photo.JPG" "VincentStuff/" "vimrcStff.txt" "vim_cheat_sheet_for_programmers_print-1024x791.jpg" "vim.jpg" "verification of enrollment.pdf" "Tuition.png" "ToDoUpdates~" "ToDoUpdates.txt~" "todo3.rtf" "TipsForInterviews.rtf" "ThingToDo3" "ThingToDo2.txt" "ThingToDo.txt" "ThingToDo (X230's conflicted copy 2017-03-02).txt" "ThingsToKnow3.txt" "ThingsToKnow2.txt" "ThingsToKnow.txt" "ThingsToCheck.rtf" "TeX_for_Novices.pdf" "sysadmin.pdf" "someJava2.java" "some.java" "Some Useful Files/" "Solutions-20170129T014014Z.zip" "Solutions/" "solution.zip" "slack_how_it_works.jpg" "shit todo.rtf" "schoolPayments.png" "sam.rtf" "resume_example.jpg" "Resistor_color_codes.jpg" "recentThingsToDo" "raspi.pdf" "python_book_01.pdf" "Project/" "primitiveVsObject.pdf" "prepare_google.pdf" "pointers.txt" "past school/" "passwd.rtf" "OpenSetup.INI" "OpenCapture.exe" "OnetabExport.txt" "Onetab backup/" "Older QTRs/" "old-midterm-solutions.pdf" "Old School Stuff/" "np-reductions.pdf" "Notes/" "NI LabView course/" "motive2.jpg" "motive1.png" "MicrosoftSerialKey.png" "MiburaBootcamp/" "MeanStacks.rtf" "MatthewLinNotes/" "Math 61/" "MagPi07.pdf" "lkmpg.pdf" "linux_rootkit.pdf" "LeetCode-master.zip" "languages.jpg" "key-card.odt" "jobs.webp" "Job Search/" "java_studycode.java" "Jae Employment Agreement_2.docx" "Jae Employment Agreement.docx.pdf" "InterviewTips.txt" "Interview/" "init.el" "Inflern.url" "Images/" "Icon
+" "hw-pubkey.asc" "HANB_How_to_write_unmaintainable_code.pdf" "good_developer.pdf" "Github_Course/" "github-git-cheat-sheet.pdf" "GitHub - andreis_interview_ Everything you need to kick ass on your coding interview.html" "GettingaJob (6).pdf" "getIP.sh" "Geico_Insurance/" "Favorites/" "fall2016tuition.png" "face.jpg" "FA15QTR.xlsx" "Everything you need to kick ass on your coding interview_files/" "engineeringvi_phase2_draftinitialstudy.pdf" "ENG195_Contract-10-25-16_135015.PDF" "EE_UG_Course_030415.png" "EE_CourseFiles.zip" "EE_CE worksheet_06_13.pdf" "EE M16 lecture notes/" "EE 131A book pdf/" "EE/" "EDAB Research Guide.pdf" "DVC CS/" "dijkstra.ppt" "destiny.jpg" "degreecandidacy.pdf" "deeplearning.pdf" "CTCI-master.zip" "ctci-master (1).zip" "ctci-master/" "CSM117_Project/" "CS_CSE_20150224.pdf" "CS33-lecture-notes-master.zip" "CS33-lecture-notes-master/" "CS32_Nachenberg_14Winter/" "CS32_CareySlides_ppt/" "CS32_CareySlides_pdf/" "CS31_Smallberg_14Fall/" "cs31/" "CS180_meka_slides/" "CS144Notes.pdf" "CS131_milstein_notes/" "CS source codes/" "CS course materials/" "cracking-the-coding-interview-master.zip" "cracking-the-coding-interview-master/" "course.txt" "Course schedule.docx" "Code Complete 2nd Edition V413HAV.pdf" "Club Activities/" "CaptureTheFlag/" "CAM00065.jpg" "CAM00063.jpg" "CAM00062.jpg" "Bridge.JPG" "black_world.png" "big-o-cheatsheet.pdf" "Berkeley_CompSci61B/" "Background/" "awesome-js-master.zip" "awesome-js-master/" "Awesome-Github-Projects/" "art_1497398989.jpg" "AlphaGo-develop.zip" "algorithms.pdf" "ACM_Hack/" "Abyss.tmTheme" "9. 17 Summer/" "8. 17 Spring/" "7. 17 Winter/" "6. 16 Fall/" "5. 16 Spring/" "4421_Chapter_12_-_Discrete_Fourier_transform.pdf" "4. 16 Winter/" "3. 15 Fall/" "2016-05-25-Password_Security.pdf" "2016-01-25-bootloading-slides.pdf" "2015-10-20-SCM.zip" "2. 15 Spring/" "15 Summer CS 32/" "15 Summer CS 31/" "15 Summer/" "1453719576QlxnzCrg9RfJmdv4ZReUw.jpg" "113 project/" "1. 15 Winter/" "0. 12 Fall/" ".zshrc" ".vimrc" ".DS_Store" ".dropbox.cache/" ".dropbox" "%3F%3F.gif" "!WebsitesToCheck/" "!someshit.txt" "!pdfsToCheck/" "!Interviews/" "!!내생각/" "!!!!!!!!!!!하자.txt" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
