@@ -117,7 +117,7 @@ alias pissh='ssh raspberrypi.local -l jpark'
 #Check AWS dashboard and add more aliases if needed
 #AWS SSH alias
 #This ip address changes whenever I turn it off and run it again
-# removed this part
+# I removed this part, has my AWS key and instance info
 # Again, I will be using the same .pem file, but different address for the server
 # This will happen everytime I stop and restart a server
 
