@@ -6,3 +6,4 @@ I'm also trying to get used to emacs, because, well...what do you say, real deve
 it from a friend, not my idea)
 
 I'll be updating my dotfiles accordingly whenever I make changes
+This may include small changes like adding comments and paths to a major overhaul
