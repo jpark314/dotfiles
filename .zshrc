@@ -216,3 +216,6 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/locl/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 eval "$(chef shell-init zsh)"
+
+# Add PATH for mono
+export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
