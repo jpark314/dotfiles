@@ -295,3 +295,7 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 
 " Make the directory and parents for the current file
 command! -complete=file -nargs=0 Mkdir !mkdir -p %:h
+
+"add keymap for tagbar
+nmap <F8> :TagbarToggle<CR>
+
