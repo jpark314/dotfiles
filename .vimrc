@@ -299,3 +299,5 @@ command! -complete=file -nargs=0 Mkdir !mkdir -p %:h
 "add keymap for tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" add keymap for nerdtree
+nmap <F7> :NERDTreeToggle<CR>
