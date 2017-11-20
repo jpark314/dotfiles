@@ -219,3 +219,6 @@ eval "$(chef shell-init zsh)"
 
 # Add PATH for mono
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
+
+# Add PATH for julia (Mac)
+export PATH="/Applications/Julia-0.6.app/Contents/Resources/julia/bin:$PATH"
