@@ -148,6 +148,7 @@ set list
 set nu
 set ic
 set cursorline
+set cursorcolumn
 set showmatch
 set wmnu
 set wrap
@@ -296,8 +297,12 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " Make the directory and parents for the current file
 command! -complete=file -nargs=0 Mkdir !mkdir -p %:h
 
-"add keymap for tagbar
+" add keymap for tagbar
 nmap <F8> :TagbarToggle<CR>
 
 " add keymap for nerdtree
 nmap <F7> :NERDTreeToggle<CR>
+
+" highlight cursorline and cursorcolumn
+hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
+hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
