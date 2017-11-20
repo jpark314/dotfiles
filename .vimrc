@@ -116,6 +116,7 @@ let g:xptemplate_brace_complete = '([{'
 let g:SuperTabCrMapping = 0
 
 " Personal tastes
+set lazyredraw
 set textwidth=120
 set encoding=utf-8
 set t_Co=256
