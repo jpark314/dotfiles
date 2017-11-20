@@ -45,6 +45,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'pangloss/vim-javascript'
 " added autocomplpop
 " Bundle 'exvim/ex-autocomplpop'
+Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'elzr/vim-json'
 Plugin 'plasticboy/vim-markdown'
@@ -111,6 +112,8 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_frontmatter = 1
 let g:xptemplate_brace_complete = '([{'
+
+let g:SuperTabCrMapping = 0
 
 " Personal tastes
 set textwidth=120
@@ -272,6 +275,16 @@ set statusline+=/
 set statusline+=%{&ft} " Type (python).
 set statusline+=)
 set statusline+=\ (line\ %l\/%L,\ col\ %03c)
+
+" improve mapping
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " color scheme
 if has('gui_running')
