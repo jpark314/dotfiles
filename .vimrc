@@ -176,6 +176,8 @@ set laststatus=2
 set linespace=2
 let python_highlight_all=1
 syntax on
+file plugin on
+set omnifunc=syntaxcomplete#Complete
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -281,8 +283,8 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c)
 
 " improve mapping
 set completeopt=longest,menuone
+set completeopt+=preview
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
