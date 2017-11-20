@@ -73,6 +73,7 @@ Plugin 'vim-airline/vir-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'TaskList.vim'
 
 " Color schemes
 Plugin 'tomasr/molokai'
