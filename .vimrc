@@ -116,6 +116,14 @@ let g:xptemplate_brace_complete = '([{'
 
 let g:SuperTabCrMapping = 0
 
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+"to prevent clash with youcompleteme, change snippet trigger
+imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+
 " Personal tastes
 set lazyredraw
 set textwidth=120
@@ -178,6 +186,11 @@ let python_highlight_all=1
 syntax on
 file plugin on
 set omnifunc=syntaxcomplete#Complete
+
+"enable keyboard shortcuts
+let g:tern_map_keys=1
+"show argument hints
+let g:tern_show_argument_hints='on_hold'
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
