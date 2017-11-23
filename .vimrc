@@ -330,14 +330,14 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 command! -complete=file -nargs=0 Mkdir !mkdir -p %:h
 
 " add keymap for vertical and horizontal split
-nmap <F6> :sp<CR>
-nmap <F5> :vsp<CR>
+nmap <F5> :sp<CR>
+nmap <F4> :vsp<CR>
 
 " add keymap for current buffers
-nmap <F4> :ls<CR>
+nmap <F3> :ls<CR>
 
 " add keymap for launching external process whil using vim (zsh)
-nmap <F3> :!zsh<CR>
+" nmap <F3> :!zsh<CR>
 
 " add keymap for tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -348,3 +348,10 @@ nmap <F7> :NERDTreeToggle<CR>
 " highlight cursorline and cursorcolumn
 hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
 hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
+
+" disable automatic comment indentation
+set formatoptions-=cro
+
+" specifically for c, cpp, java
+au FileType c,cpp,java setlocal comments-=:// comments+=f://
+
