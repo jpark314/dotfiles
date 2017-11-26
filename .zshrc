@@ -109,10 +109,10 @@ alias ubuntussh='ssh -p 2222 127.0.0.1 -l jpark'
 #Virtualbox - CentOS
 alias centos='VBoxManage startvm "centos" --type headless'
 vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
-alias centosssh='ssh -p 8080 127.0.0.1 -l jpark'
+alias centosssh='ssh -p 2220 127.0.0.1 -l jpark'
 
 #Raspberry Pi-USB serial connection
-alias pissh='ssh raspberrypi.local -l jpark'
+alias pissh='ssh raspberrypi.local -l pi'
 
 #Check AWS dashboard and add more aliases if needed
 #AWS SSH alias
