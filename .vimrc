@@ -344,6 +344,19 @@ nmap <F8> :TagbarToggle<CR>
 
 " add keymap for nerdtree
 nmap <F7> :NERDTreeToggle<CR>
+let NERDTreeShowBookmarks=1
+map <leader>e :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeFind<CR>
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=1
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+" locate current file in NERDTree
+map <leader>l :NERDTreeFind<CR>
 
 " highlight cursorline and cursorcolumn
 hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
