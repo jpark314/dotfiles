@@ -177,6 +177,7 @@ set wildmode=full
 set statusline+=%F
 set splitbelow
 set splitright
+set clipboard=unnamed
 syntax enable
 filetype off
 filetype plugin indent on
@@ -309,6 +310,9 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 if has('gui_running')
     set background=dark
     colorscheme solarized
+" disable comment here to set color scheme to zenburn
+"else
+"    colorscheme zenburn
 endif
 
 if !has('nvim')
@@ -367,4 +371,7 @@ set formatoptions-=cro
 
 " specifically for c, cpp, java
 au FileType c,cpp,java setlocal comments-=:// comments+=f://
+
+" flagging unnecessary whitespace
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
