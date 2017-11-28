@@ -199,10 +199,23 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
 " Enable folding
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
 set foldmethod=indent
 set foldlevel=99
 let g:SimpylFold_docstring_preview=1
+
+set foldmethod=marker
+set foldlevel=0
+set modelines=1
 
 " Enable folding with the spacebar
 nnoremap <space> za
@@ -227,7 +240,7 @@ au BufNewFile *.py
     \ set autoindent
     \ set fileformat=unix
 
-au BufNewFile *.js, *.html, *.css
+au BufNewFile *.js, *.html, *.css, *.json
     \ set tabstop=2
     \ set softtabstop=2
     \ set shiftwidth=2
@@ -374,4 +387,42 @@ au FileType c,cpp,java setlocal comments-=:// comments+=f://
 
 " flagging unnecessary whitespace
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" add word processor mode
+func! WordProcessorMode()
+ setlocal textwidth=80
+ setlocal smartindent
+ setlocal spell spelllang=en_us
+ setlocal noexpandtab
+endfu
+
+" shortcut, use :WP
+com! WP call WordProcessorMode()
+
+" autogroups
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
+                \:call <SID>StripTrailingWhitespaces()
+    autocmd FileType java setlocal noexpandtab
+    autocmd FileType java setlocal list
+    autocmd FileType java setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType php setlocal expandtab
+    autocmd FileType php setlocal list
+    autocmd FileType php setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType php setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType ruby setlocal tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter *.cls setlocal filetype=java
+    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+augroup END
 
