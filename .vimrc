@@ -387,7 +387,8 @@ set formatoptions-=cro
 au FileType c,cpp,java setlocal comments-=:// comments+=f://
 
 " flagging unnecessary whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" apparently, this line of code is causing errors
 
 " add word processor mode
 func! WordProcessorMode()
