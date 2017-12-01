@@ -431,6 +431,9 @@ augroup END
 " vim-livedown toggle and setup
 nmap gm :LivedownToggle<CR>
 
+" prevent from causing error for not having .ycm_extra_conf.py file
+let g:ycm_global_ycm_extra_conf = 1
+
 " should markdown preview get shown automatically upon opening markdown buffer
 let g:livedown_autorun = 0
 
