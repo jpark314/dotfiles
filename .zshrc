@@ -205,6 +205,10 @@ alias ez='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
 alias sz='source ~/.zshrc'
 
+# alias for golang run
+alias gor='go run'
+alias ng='nginx'
+
 source "/Users/jpark314/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
