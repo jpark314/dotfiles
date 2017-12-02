@@ -446,6 +446,9 @@ let g:livedown_port = 1337
 " the browser to use
 let g:livedown_browser = "chrome"
 
+" allowing to use markdown preview(using grip: use brew install grip)
+let vim_markdown_preview_github=1
+
 " Rope AutoComplete
 let ropevim_vim_completion =1
 let ropevim_extended_complete = 1
