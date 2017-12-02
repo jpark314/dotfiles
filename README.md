@@ -8,8 +8,8 @@ I'll be updating my dotfiles accordingly whenever I make changes (It's a good ha
 
 This may include small changes like adding comments and paths to a major overhaul
 
-* Installing tagbar
-
-  Need to install universal ctags first
-use: brew install --HEAD universal-ctags/universal-ctags/universal-ctags for Mac
+Installations
+=============
+* Installing tagbar:
+  * Need to install universal ctags first. use: $brew install --HEAD universal-ctags/universal-ctags/universal-ctags for Mac
 
