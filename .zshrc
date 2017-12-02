@@ -209,6 +209,19 @@ alias sz='source ~/.zshrc'
 alias gor='go run'
 alias ng='nginx'
 
+# alias for docker
+alias di='docker images'
+alias dpa='docker ps -a'
+# quick note to get use to more useful commands
+# to remove docker images
+# docker rmi <IMAGE ID>
+# to remove docker containers
+# docker rm <CONTAINER ID>
+# to stop all containers
+# docker stop $(docker ps -a -q)
+# to remove all containers
+# docker rm $(docker ps -a -q)
+
 source "/Users/jpark314/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -226,3 +239,24 @@ export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
 
 # Add PATH for julia (Mac)
 export PATH="/Applications/Julia-0.6.app/Contents/Resources/julia/bin:$PATH"
+
+##############################more customization#######################
+# find sorted list of biggest files under current directory
+alias biggest='find -type f -printf '\''%s %p\n'\'' | sort -nr | head -n 40 | gawk "{ print \$1/1000000 \" \" \$2 \" \" \$3 \" \" \$4 \" \" \$5 \" \" \$6 \" \" \$7 \" \" \$8 \" \" \$9 }"'
+
+# Autoload screen
+if [[ $STY = '' ]] then screen -xR; fi
+
+# type 'dir' instead of 'cd dir'
+setopt AUTO_CD
+
+# pipe multiple outputs
+setopt MULTIOS
+
+setopt ZLE
+
+# save a few keystrokes when opening the learn sql database
+if [[ -x `which psql` ]]; then
+  alias lrnsql="psql learn_sql"
+fi
+
