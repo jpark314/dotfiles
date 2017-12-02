@@ -447,6 +447,11 @@ let g:livedown_port = 1337
 let g:livedown_browser = "chrome"
 
 " allowing to use markdown preview(using grip: use brew install grip)
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_brower='Google Chrome'
+" automatically remove the html file after opening it in a browser
+let vim_markdown_preview_temp_file=1
+" allows github flavored markdown
 let vim_markdown_preview_github=1
 
 " Rope AutoComplete
