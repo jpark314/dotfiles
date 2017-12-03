@@ -260,3 +260,8 @@ if [[ -x `which psql` ]]; then
   alias lrnsql="psql learn_sql"
 fi
 
+# recently, opening up the oh-my-zsh took me more than 1.5s and I had
+# to do something, figured out the system-wide zshrc file in /etc/zsh
+# was calling compinit more than once
+skip_global_compinit=1
+
