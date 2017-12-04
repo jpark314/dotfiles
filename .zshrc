@@ -265,3 +265,13 @@ fi
 # was calling compinit more than once
 skip_global_compinit=1
 
+# my effort of skipping global compinit didn't worked that well to speed up loading oh-my-zsh on iterm2
+# I figured out that there is a problem with Apple's log system that may slow up the launch
+# go to '$cd /private/var/log/asl' and type '$ls'
+# you will be able to see a bunch of *.asl log files, use sudo to delete them
+# below is a quick alias to remove all of them at once, just make sure the path is correct
+# check everytime when starting your zsh takes more than 1 second
+alias cleanasl='sudo rm -f /private/var/log/asl/*.asl'
+
+# before setting skip_global_compinit=1, it took about 2.5 seconds, reduced to about 2 seconds
+# removing log files got the launch time down to about a second
