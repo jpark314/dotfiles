@@ -275,3 +275,6 @@ alias cleanasl='sudo rm -f /private/var/log/asl/*.asl'
 
 # before setting skip_global_compinit=1, it took about 2.5 seconds, reduced to about 2 seconds
 # removing log files got the launch time down to about a second
+
+# it's such as pain to type the path everytime
+alias checkasl='ls /private/var/log/asl/*.asl'
