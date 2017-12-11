@@ -240,6 +240,9 @@ export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
 # Add PATH for julia (Mac)
 export PATH="/Applications/Julia-0.6.app/Contents/Resources/julia/bin:$PATH"
 
+# Add PATH for rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 ##############################more customization#######################
 # find sorted list of biggest files under current directory
 alias biggest='find -type f -printf '\''%s %p\n'\'' | sort -nr | head -n 40 | gawk "{ print \$1/1000000 \" \" \$2 \" \" \$3 \" \" \$4 \" \" \$5 \" \" \$6 \" \" \$7 \" \" \$8 \" \" \$9 }"'
