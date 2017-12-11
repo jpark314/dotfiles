@@ -115,6 +115,12 @@ let g:vim_markdown_json_frontmatter = 1
 let g:vim_markdown_frontmatter = 1
 let g:xptemplate_brace_complete = '([{'
 
+" get ycm_server logs
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+let g:ycm_warning_symbol = '.'
+let g:ycm_error_symbol = '..'
+let g:ycm_server_use_vim_stdout = 1
 let g:SuperTabCrMapping = 0
 
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
