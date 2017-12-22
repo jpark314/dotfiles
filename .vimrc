@@ -1,3 +1,13 @@
+""""""""""""""""""
+" Just to make sure not to forget about the basics of Vim
+" use 'v' to block single letter, or 'V' to block the whole line, use 'd' to remove, use 'y' to yank(copy), and use 'p'
+" to paste
+" Also, when using Mac, you can use fn + arrow to get to the first or the end of the line
+" Also, use 'b' to move back one word and 'w' to move forward one word in Vim
+" Last thing, using iTerm2, use alt-f (forward), alt-b (backward), alt-d (delete) words in terminal line
+" For linux, probably use Alt+left/right arrow to do the same thing
+""""""""""""""""""
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -75,6 +85,8 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'TaskList.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+" add plugin for auto-pairs
+Plugin 'auto-pairs-gentle'
 
 " Color schemes
 Plugin 'tomasr/molokai'
@@ -191,6 +203,8 @@ filetype plugin indent on
 set laststatus=2
 set linespace=2
 let python_highlight_all=1
+" runtime path manipulation for pathogen
+execute pathogen#infect()
 syntax on
 file plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -474,3 +488,6 @@ imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 " resolve task list mapping error
 nnoremap <leader>v <Plug>TaskList
 
+" auto-pairs configuration
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutBackInsert = "<M-b>"
