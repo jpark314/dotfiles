@@ -353,6 +353,10 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " Make the directory and parents for the current file
 command! -complete=file -nargs=0 Mkdir !mkdir -p %:h
 
+" (Mac) open html file on Safari and Chrome
+nnoremap <C-s> :!open -a Safari %<CR><CR>
+nnoremap <C-g> :!open -a Google\ Chrome %<CR><CR>
+
 " add keymap for vertical and horizontal split
 nmap <F5> :sp<CR>
 nmap <F4> :vsp<CR>
