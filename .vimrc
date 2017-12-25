@@ -142,7 +142,13 @@ let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
-"to prevent clash with youcompleteme, change snippet trigger
+" add shortcuts for managing buffers
+nnoremap <C-S-t> :enew<Enter>
+nnoremap <C-F5> :bprevious!<Enter>
+nnoremap <C-F6> :bnext!<Enter>
+nnoremap <C-F4> :bp <BAR> bd #<Enter>
+
+" to prevent clash with youcompleteme, change snippet trigger
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
 
@@ -494,3 +500,7 @@ nnoremap <leader>v <Plug>TaskList
 " auto-pairs configuration
 let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = "<M-b>"
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabContextDefaultCompletionType = "<c-n>"
