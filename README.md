@@ -19,6 +19,9 @@ Installations
     ~/.vim/bundle
   * (assuming you already have plugins directory inside ~/.vim)use: mkdir -p ~/.vim/autoload && curl -LSso ~/.vim/autoload/pathogen.vim https://top.pe/pathogen.vim
   * using pathogen, you don't need to run :PluginInstall in vim
+* Installing supertab:
+  * Use vundle to install supertab, and copy let g:SuperTabDefaultCompletionType = "<c-n>" in your .vimrc to set a shortcut for using supertab.
+  * I'm using YouCompleteMe on Linux and supertab on Mac because of python dependecies
 
 Updates
 =======
