@@ -385,7 +385,7 @@ nmap <F5> :sp<CR>
 nmap <F4> :vsp<CR>
 
 " add keymap for current buffers
-nmap <F3> :ls<CR>
+nnoremap <F3> :buffers<CR>:buffer<Space>
 
 " add keymap for launching external process whil using vim (zsh)
 " nmap <F3> :!zsh<CR>

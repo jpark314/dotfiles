@@ -129,6 +129,11 @@ alias bsl='brew services list'
 alias lugssh='ssh ssh.linux.ucla.edu -l ferris314'
 alias lugssh2='ssh linux.ucla.edu -l ferris314'
 
+#MySQL alias (I installed MySQL directly from a .dmg package, not using brew)
+alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
+alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
+alias mysqlrestart='sudo /usr/local/mysql/support-files/mysql.server restart'
+
 #python
 pycalc() {
     python -c "print $@"
