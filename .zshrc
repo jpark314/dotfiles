@@ -111,6 +111,11 @@ alias centos='VBoxManage startvm "centos" --type headless'
 vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
 alias centosssh='ssh -p 2220 127.0.0.1 -l jpark'
 
+#Virtualbox - FreeBSD
+alias bsd='VBoxManage startvm "freebsd" --type headless'
+vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
+alias bsdssh='ssh -p 2224 127.0.0.1 -l jpark'
+
 #Raspberry Pi-USB serial connection
 alias pissh='ssh raspberrypi.local -l pi'
 
@@ -120,6 +125,7 @@ alias pissh='ssh raspberrypi.local -l pi'
 # I removed this part, has my AWS key and instance info
 # Again, I will be using the same .pem file, but different address for the server
 # This will happen everytime I stop and restart a server
+#### Currently I deleted all my AWS instances
 
 #Brew service list
 alias bsl='brew services list'
