@@ -131,6 +131,10 @@ alias pissh='ssh raspberrypi.local -l pi'
 alias bsl='brew services list'
 #Whenever using mysql or mariadb, unlink either and do 'brew services start {}'
 
+#Chrome shortcut alias
+alias chrome='open -a "Google Chrome"'
+# For GNU/Linux, just use $google-chrome
+
 #LUG Server ssh
 alias lugssh='ssh ssh.linux.ucla.edu -l ferris314'
 alias lugssh2='ssh linux.ucla.edu -l ferris314'
