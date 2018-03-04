@@ -504,3 +504,8 @@ let g:AutoPairsShortcutBackInsert = "<M-b>"
 " Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+" Added lines for Github Flavored Markdown syntax extension
+let g:gfm_syntax_enable_always = 0
+let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
+autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
