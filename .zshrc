@@ -8,8 +8,7 @@ export ZSH=/Users/jpark314/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="spaceship"
-POWERLEVEL9K_MODE='awesome-patched'
+ZSH_THEME="maran"
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # ZSH_THEME="avit"
 
@@ -89,6 +88,13 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias e="exit"
 alias prolog="swipl" ## install swi-prolog first using brew
+alias apachestart='sudo apachectl start'
+alias apachestop='sudo apachectl stop'
+alias erlang='erl'
+# Since ipython 6 no longer supports python 2.x version, use this instead
+alias ipython2='python -m IPython'
+alias latexit='/Library/TeX/texbin/pdflatex' # this is for MacTex specific
+source /Users/jpark/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ###########################General Path###############################
 export PATH=/usr/local/bin:$PATH
