@@ -87,12 +87,73 @@ Plugin 'TaskList.vim'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 " add plugin for auto-pairs
 Plugin 'auto-pairs-gentle'
+Plugin 'lervag/vimtex'
+
+"Javascript
+"Plugin 'node.js'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'Enhanced-Javascript-syntax'
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'gavocanov/vim-js-indent'
+"Plugin 'everedifice/vim-js-syntax'
+Plugin 'othree/jsdoc-syntax.vim'
+Plugin 'javascript-libraries-syntax'
+    let g:used_javascript_libs = 'jquery,underscore,jasmine,react'
+Plugin '1995eaton/vim-better-javascript-completion'
+Plugin 'othree/jspc.vim'
+Plugin 'moll/vim-node'
+Plugin 'heavenshell/vim-jsdoc'
+    let g:jsdoc_default_mapping = 0
+    let g:jsdoc_underscore_private = 1
+Plugin 'marijnh/tern_for_vim'
+    let tern_show_argument_hint='on_move'
+    let tern_show_signature_in_pum=1
+    let g:tern_map_keys=1
+    let g:tern_map_prefix='<Leader>'
+
+"C
+Plugin 'c.vim'
+
+Plugin 'rking/ag.vim'
+Plugin 'jeetsukumaran/vim-buffergator'
+    let g:buffergator_suppress_keymaps = 1
 
 " Color schemes
 Plugin 'tomasr/molokai'
 Plugin 'flass/vim-colorschemes'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+
+"Lint/Autocomplete
+if has('nvim')
+Plugin 'benekastah/neomake'
+    autocmd! BufWritePost * Neomake
+    let g:neomake_javascript_enabled_makers = ['eslint']
+else
+"Plugin 'scrooloose/syntastic'
+    "set statusline+=%#warningmsg#
+    "set statusline+=%{SyntasticStatuslineFlag()}
+    "set statusline+=%*
+    "let g:syntastic_always_populate_loc_list = 1
+    "let g:syntastic_auto_loc_list = 0
+    "let g:syntastic_check_on_open = 1
+    "let g:syntastic_check_on_wq = 0
+    "let g:syntastic_javascript_checkers=["eslint"]
+    "let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+
+Plugin 'Valloric/YouCompleteMe'
+    let g:ycm_confirm_extra_conf=0
+    let g:ycm_auto_trigger = 1
+
+Plugin 'maralla/validator.vim'
+    let g:validator_javascript_checkers=['eslint']
+    let g:validator_filetype_map={'javascript.jsx': 'javascript'}
+    let g:validator_warning_symbol='✓'
+    let g:validator_error_symbol='✗'
+    highlight ValidatorErrorSign ctermbg=18 ctermfg=09
+    highlight ValidatorWarningSign ctermbg=18 ctermfg=12
+endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -215,8 +276,10 @@ let python_highlight_all=1
 " runtime path manipulation for pathogen
 execute pathogen#infect()
 syntax on
+syntax sync fromstart
 file plugin on
 set omnifunc=syntaxcomplete#Complete
+set syntax=mdarkdown
 
 "enable keyboard shortcuts
 let g:tern_map_keys=1
@@ -228,6 +291,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" remove unnecessary whitespace when saving
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
 
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
