@@ -1,6 +1,6 @@
 # dotfiles
 
-I'm using zsh as my default shell for both Mac and Linux (Ubuntu and Arch/Majaro) and Vim as my primary text editor
+I'm using zsh as my default shell for both Mac and Linux (Ubuntu) and Vim as my primary text editor
 
 I'm also trying to get used to emacs, because, well...what do you say, real developers use emacs for some reason (heard this phrase from a friend, not my idea)
 
@@ -36,3 +36,8 @@ Most of the scripts that I wrote are both compatible with Linux and Mac
     * Everytime I try to open vim, it fails to connect to ycm_server and requires to restart, but nothing changes
   * Added auto-pairs to automatically add closing braces/brackets
   * Added tmux.conf with some configuration, I personally use iTerm2 on Mac and tmux on Linux
+
+* Note on 03/24/2017:
+  * So, I'm now trying to learn how to use emacs professionally to somewhat replace all bloated IDEs. Also, I've
+    disabled cursorline and cursorcolumn when using on my Mac, since iterm2 just can't handle cursorlines and lags
+    hella bad
