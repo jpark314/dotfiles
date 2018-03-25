@@ -280,6 +280,14 @@ syntax sync fromstart
 file plugin on
 set omnifunc=syntaxcomplete#Complete
 set syntax=mdarkdown
+set history=1000
+set undolevels=1000
+set tabpagemax=50
+
+set completeopt-=preview
+set complete-=i
+set ttyfast
+set ttyscroll=3
 
 "enable keyboard shortcuts
 let g:tern_map_keys=1
@@ -296,6 +304,11 @@ nnoremap <C-H> <C-W><C-H>
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
+
+autocmd FileType * autocmd FileWritePre    * :call TrimWhiteSpace()
+autocmd FileType * autocmd FileAppendPre   * :call TrimWhiteSpace()
+autocmd FileType * autocmd FilterWritePre  * :call TrimWhiteSpace()
+autocmd FileType * autocmd BufWritePre     * :call TrimWhiteSpace()
 
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
