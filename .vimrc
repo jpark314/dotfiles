@@ -112,6 +112,9 @@ Plugin 'marijnh/tern_for_vim'
     let g:tern_map_keys=1
     let g:tern_map_prefix='<Leader>'
 
+" added jedi-vim
+Plugin 'davidhalter/jedi-vim'
+
 "C
 Plugin 'c.vim'
 
@@ -590,3 +593,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:gfm_syntax_enable_always = 0
 let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
 autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
+
+" make jedi-vim use tabs
+let g:jedi#use_tabs_not_buffers = 1
+
