@@ -128,6 +128,9 @@ Plugin 'flass/vim-colorschemes'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 
+" Rainbow color parenthesis
+Plugin 'luochen1990/rainbow'
+
 "Lint/Autocomplete
 if has('nvim')
 Plugin 'benekastah/neomake'
@@ -597,3 +600,5 @@ autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
 " make jedi-vim use tabs
 let g:jedi#use_tabs_not_buffers = 1
 
+" enable rainbow parethesis
+let g:rainbow_active = 1
