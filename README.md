@@ -41,3 +41,6 @@ Most of the scripts that I wrote are both compatible with Linux and Mac
   * So, I'm now trying to learn how to use emacs professionally to somewhat replace all bloated IDEs. Also, I've
     disabled cursorline and cursorcolumn when using on my Mac, since iterm2 just can't handle cursorlines and lags
     hella bad
+
+* Note on 09/02/2018:
+  * Recently installed colorls, use $gem install colorls to install colorls, added alias for colorls in zshrc

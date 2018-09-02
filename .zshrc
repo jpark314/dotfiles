@@ -174,6 +174,7 @@ alias less='less -R'
 alias tree='tree -C'
 alias diff='diff -u'
 
+alias cl='colorls'
 alias ll='ls -lv'
 alias lla='ls -al'
 alias la='ls -al'
