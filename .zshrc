@@ -2,15 +2,69 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jpark314/.oh-my-zsh
+export ZSH=/home/jpark/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="maran"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-# ZSH_THEME="avit"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# powerline customization
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND='6'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='6'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='6'
+POWERLEVEL9K_NODE_VERSION_BACKGROUND='22'
+POWERLEVEL9K_NVM_BACKGROUND='28'
+POWERLEVEL9K_NVM_FOREGROUND='15'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context history dir node_version vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs load ram virtualenv rbenv rvm nvm time)
+# removed battery
+
+POWERLEVEL9K_BATTERY_CHARGING='yellow'
+POWERLEVEL9K_BATTERY_CHARGED='green'
+POWERLEVEL9K_BATTERY_DISCONNECTED='$DEFAULT_COLOR'
+POWERLEVEL9K_BATTERY_LOW_THRESHOLD='10'
+POWERLEVEL9K_BATTERY_LOW_COLOR='red'
+#POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
+
+#POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
+#POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='red'
+#POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
+
+#POWERLEVEL9K_CUSTOM_TIME_FORMAT="%D{\uf017 %H:%M:%S}"
+#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d.%m.%y}"
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"
+POWERLEVEL9K_TIME_BACKGROUND="black"
+POWERLEVEL9K_TIME_FOREGROUND="249"
+#POWERLEVEL9K_TIME_FORMAT="\UF43A %D{%I:%M  \UF133  %m.%d.%y}"
+POWERLEVEL9K_RVM_BACKGROUND="black"
+POWERLEVEL9K_RVM_FOREGROUND="249"
+POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
+#POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
+
+POWERLEVEL9K_RAM_BACKGROUND='blue'
+POWERLEVEL9K_RAM_FOREGROUND='white'
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,7 +99,7 @@ ZSH_THEME="maran"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="mm/dd/yyyy"
+# HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -54,9 +108,18 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  fasd
+  tmuxinator
+)
 
 source $ZSH/oh-my-zsh.sh
+
+# gsettings get org.gnome.desktop.input-sources xkb-options ['ctrl:nocaps']
+# the above method is to convert capslock to control
+# the below method is to convert capslock to esc
+# gsettings get org.gnome.desktop.input-sources xkb-options ['caps:esc']
 
 # User configuration
 
@@ -86,89 +149,68 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
-alias e="exit"
-alias prolog="swipl" ## install swi-prolog first using brew
-alias apachestart='sudo apachectl start'
-alias apachestop='sudo apachectl stop'
-alias erlang='erl'
-# Since ipython 6 no longer supports python 2.x version, use this instead
-alias ipython2='python -m IPython'
-alias latexit='/Library/TeX/texbin/pdflatex' # this is for MacTex specific
-source /Users/jpark/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-###########################General Path###############################
-export PATH=/usr/local/bin:$PATH
-export PATH=~/.local/bin:$PATH
-PATH="$PATH:$HOME/anaconda/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/.local/bin/jupyter-notebook
 
-############################Go Lang###################################
-export GOPATH=$HOME/golang
-#export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+export PATH=/home/jpark/Downloads/swift-4.1.1-RELEASE-ubuntu16.10/usr/bin:$PATH
+
 export PATH=$PATH:/usr/local/go/bin
 
-##########################Customizations##############################
-#Virtualbox - Ubuntu // just a test-demo ubuntu virtual machine
-alias ubuntu='VBoxManage startvm "ubuntu" --type headless'
-vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
-alias ubuntussh='ssh -p 2222 127.0.0.1 -l jpark'
+export PATH=~/.npm-global/bin:$PATH
 
-#Virtualbox - CentOS
-alias centos='VBoxManage startvm "centos" --type headless'
-vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
-alias centosssh='ssh -p 2220 127.0.0.1 -l jpark'
+export PATH=$HOME/.node_modules_global/bin:$PATH
 
-#Virtualbox - FreeBSD
-alias bsd='VBoxManage startvm "freebsd" --type headless'
-vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
-alias bsdssh='ssh -p 2224 127.0.0.1 -l jpark'
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
 
-#Raspberry Pi-USB serial connection
-alias pissh='ssh raspberrypi.local -l pi'
+#############################Customizations###################################
+source /home/jpark/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-#Check AWS dashboard and add more aliases if needed
-#AWS SSH alias
-#This ip address changes whenever I turn it off and run it again
-# I removed this part, has my AWS key and instance info
-# Again, I will be using the same .pem file, but different address for the server
-# This will happen everytime I stop and restart a server
-#### Currently I deleted all my AWS instances
-
-#Brew service list
-alias bsl='brew services list'
-#Whenever using mysql or mariadb, unlink either and do 'brew services start {}'
-
-#Chrome shortcut alias
-alias chrome='open -a "Google Chrome"'
-# For GNU/Linux, just use $google-chrome
-
-#LUG Server ssh
 alias lugssh='ssh ssh.linux.ucla.edu -l ferris314'
 alias lugssh2='ssh linux.ucla.edu -l ferris314'
 
-#MySQL alias (I installed MySQL directly from a .dmg package, not using brew)
-alias mysqlstart='sudo /usr/local/mysql/support-files/mysql.server start'
-alias mysqlstop='sudo /usr/local/mysql/support-files/mysql.server stop'
-alias mysqlrestart='sudo /usr/local/mysql/support-files/mysql.server restart'
+alias pissh='ssh raspberrypi.local -l pi'
 
-#python
-pycalc() {
-    python -c "print $@"
-}
-alias p=pycalc
-alias spark='spark-shell'
-alias javac='javac -encoding UTF-8 -g:none -Xlint:deprecation'
+alias chrome='google-chrome'
 
-alias redis='redis-cli'
+alias pdf='xdg-open'
 
-#Arp -a
+alias mux='tmuxinator'
+
+alias boottime='systemd-analyze time'
+
+alias joomscan='perl ~/Documents/joomscan/joomscan.pl'
+
+alias julia='source ~/Documents/julia-1.0.1/bin/julia'
+
+alias processing='source ~/Documents/processing-3.4/processing'
+
 alias aa='arp -a'
+
+alias bcap='sudo bettercap'
+
+alias stk='sudo -i setoolkit'
+
+alias hacktools='source ~/Documents/scripts/hacktools.sh'
+
+alias composer='php ~/composer.phar'
+
+# alias for enabling trackpoint settings under tmpfiles.d
+alias trackpoint='sudo systemd-tmpfiles --prefix=/sys --create'
+alias lua='lua5.3'
+alias luac='luac5.3'
+
+alias h='htop'
+alias t='tmux -f ~/.tmux.conf'
+alias tk='tmux kill-server'
+alias tl='tmux ls'
+alias ts='tmux source-file ~/.tmux.conf'
+alias e='exit'
+alias c='clear'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias grep='grep --color=auto'
 alias more='more -R'
 alias less='less -R'
 alias tree='tree -C'
@@ -176,7 +218,6 @@ alias diff='diff -u'
 
 alias cl='colorls'
 alias ll='ls -lv'
-alias lla='ls -al'
 alias la='ls -al'
 alias du='du -hs'
 alias df='df -h'
@@ -185,20 +226,9 @@ alias ps='ps -f'
 alias pse='ps -ef'
 alias psg='ps -ef | grep'
 
-alias v='vim'
-alias t='tmux'
-alias b='byobu'
-alias irc='irssi'
-
-alias h='htop'
-alias lsblk='diskutil list'
-
-alias dig='dig +noall +answer' #DNS
-alias highlight='pygmentize -g -f termianl 256 -O style=native'
-
 alias ga='git add'
 alias gaa='git add --all'
-alias gca='git commit -a -m'
+alias gca='git commit -a- m'
 alias git-push='git push origin -u'
 alias git-log='git log --oneline --decorate --graph --all'
 
@@ -210,98 +240,61 @@ alias gpu='git push -u'
 alias gs='git status'
 alias gv='git remote -v'
 alias gb='git branch'
-alias gbc='git branch | grep \* | cut -d ' ' -f2-'
 alias gbb='git branch -b'
 
-#####################custom aliases#################################
-alias emacs='/usr/local/Cellar/emacs/25.2/bin/emacs-25.2 -nw'
-alias mongodbconf='mongod --config /usr/local/etc/mongod.conf'
-alias postgres='psql -U postgres'
-# alias python='python2'
-# octave
-# brew info list
+alias pping='~/Documents/prettyping/prettyping'
 
-insert_sudo () { zle beginning-of-line; zle -U "sudo " }
-zle -N insert-sudo insert_sudo
-bindkey "^[s" insert-sudo
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='dgrep --color=auto'
 
-alias ez='vim ~/.vimrc'
-alias vz='vim ~/.zshrc'
-alias sz='source ~/.zshrc'
+alias traceroute='traceroute -n' # don't do reverse lookup
 
-# alias for golang run
-alias gor='go run'
-alias ng='nginx'
+alias ws='startprocess wireshark'
 
-# alias for docker
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+
+# shortened as git history - alias to tig
+alias gh='tig'
+
 alias di='docker images'
 alias dpa='docker ps -a'
-# quick note to get use to more useful commands
-# to remove docker images
-# docker rmi <IMAGE ID>
-# to remove docker containers
-# docker rm <CONTAINER ID>
-# to stop all containers
-# docker stop $(docker ps -a -q)
-# to remove all containers
-# docker rm $(docker ps -a -q)
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
-source "/Users/jpark314/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+alias tarzip='tar -czvf'
+alias untar='tar -xvzf'
+
+alias gor='go run'
+# Add path for golang
+export PATH=$PATH:/usr/local/go/bin
+
+alias tcpdump_r='sudo tcpdump -n -vv -tttt -i lo0'
+# -i lo :  loopback interface
+# -n    :  no dns resolution
+# -tttt :  human readable time stamp
+# -vv   :  verbose
+# -X    :  show contents
+# filters  :  host, port, portrange, dst/src, net
+# tcp flags:  S SYNC
+#             . ACK
+#             F FIN
+#             R RST
+#             P PUSH
+
+# enable zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export PATH=/usr/local/share/dotnet:$PATH
 
-export TERM="xterm-256color"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PATH="/usr/locl/sbin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-eval "$(chef shell-init zsh)"
+# Other plugins installed, fzf, ngrok, tig, jq, tmuxinator, fasd, xclip, lnav, ranger, realpath, ncdu, peco
 
-# Add PATH for mono
-export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/
-
-# Add PATH for julia (Mac)
-export PATH="/Applications/Julia-0.6.app/Contents/Resources/julia/bin:$PATH"
-
-# Add PATH for rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
-##############################more customization#######################
-# find sorted list of biggest files under current directory
-alias biggest='find -type f -printf '\''%s %p\n'\'' | sort -nr | head -n 40 | gawk "{ print \$1/1000000 \" \" \$2 \" \" \$3 \" \" \$4 \" \" \$5 \" \" \$6 \" \" \$7 \" \" \$8 \" \" \$9 }"'
-
-# Autoload screen
-if [[ $STY = '' ]] then screen -xR; fi
-
-# type 'dir' instead of 'cd dir'
-setopt AUTO_CD
-
-# pipe multiple outputs
-setopt MULTIOS
-
-setopt ZLE
-
-# save a few keystrokes when opening the learn sql database
-if [[ -x `which psql` ]]; then
-  alias lrnsql="psql learn_sql"
-fi
-
-# recently, opening up the oh-my-zsh took me more than 1.5s and I had
-# to do something, figured out the system-wide zshrc file in /etc/zsh
-# was calling compinit more than once
-skip_global_compinit=1
-
-# my effort of skipping global compinit didn't worked that well to speed up loading oh-my-zsh on iterm2
-# I figured out that there is a problem with Apple's log system that may slow up the launch
-# go to '$cd /private/var/log/asl' and type '$ls'
-# you will be able to see a bunch of *.asl log files, use sudo to delete them
-# below is a quick alias to remove all of them at once, just make sure the path is correct
-# check everytime when starting your zsh takes more than 1 second
-alias cleanasl='sudo rm -f /private/var/log/asl/*.asl'
-
-# before setting skip_global_compinit=1, it took about 2.5 seconds, reduced to about 2 seconds
-# removing log files got the launch time down to about a second
-
-# it's such as pain to type the path everytime
-alias checkasl='ls /private/var/log/asl/*.asl'
+# start tmux at startup
+#if [ -z "$TMUX" ]
+#then
+#  tmux attach -t TMUX || tmux new -s TMUX
+#fi
