@@ -8,20 +8,34 @@ filetype off                  " required
 " let cursor at specific line, use shift-j or shift-k to move it
 " use u to undo and ctrl-r to redo
 " use y to yank and p to paste
-" you can use > to tabshift line
+" you can use > or < to tabshift line, also works with V
 " use d to delete whole line, or use x to delete character where
 " the cursor sits at, this happens in visual mode
-" also, use r to replace character
-" this looks the same as x, but x deletes it and r replaces that character
 " use e to move to the end of the word
-" use w to move forward to the beginning of a ward
+" use r to replace the character under the cursor
+" use w to move forward to the beginning of a word
+" use dw to delete current word
+" use dd to delete current line, use 5dd for example to delete five lines
+" use a to append text after the cursor [count] times
 " use W to move forward a word
 " use b to move backward to the beginning of a word
 " use $ to move to the end of the line
 " use 0 to move to the beginning of the line
 " use L to jump to the bottom of the screen
 " use G to jump to end of the file
-" Lastly, to replace text within visual block, use x to replace text
+" use x to delete character under the cursor
+" use X to delete characters before the cursor
+"
+" use dw to delete the word under the cursor (very useful)
+" use { or } to move through paragraphs
+"
+" lastly, useful fucking tip on commenting multiple lines
+" if you use ctrl-v, it goes to visual mode linewisee, use arrow or hjkl to
+" move your cursor to comment the lines you want or uncomment it
+" to uncomment it, go to the first line of comment character
+" drag your cursor down to cover all the comment characters and press x
+" to comment, use ctrl-v and drag to block all the lines, then shift-I and
+" press # or // whatever comment you want, then pres esc twice
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
 " set the runtime path to include Vundle and initialize
@@ -61,7 +75,9 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'avakhov/vim-yaml'
+" Plugin 'Valloric/YouCompleteMe'
+" Sometimes this gets a bit annoying
 " added autocomplpop
 "Plugin 'exvim/ex-autocomplpop'
 Plugin 'ervandew/supertab'
@@ -70,7 +86,9 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+" for syntastic, I used pathogen to install
+Plugin 'joonty/vim-sauce'
 Plugin 'nvie/vim-flake8'
 Plugin 'sjl/gundo.vim'
 Plugin 'bling/vim-airline'
@@ -100,6 +118,10 @@ Plugin 'parnmatt/vim-root'
 Plugin 'faith/vim-go'
 
 Plugin 'mgedmin/pythonhelper'
+Plugin 'udalov/kotlin-vim'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'amiorin/vim-project'
+Plugin 'easymotion/vim-easymotion'
 
 "Javascript
 Plugin 'node.js'
@@ -136,6 +158,7 @@ Plugin 'jeetsukumaran/vim-buffergator'
     let g:buffergator_suppress_keymaps = 1
 
 Plugin 'svg.vim'
+Plugin 'ekalinin/Dockerfile.vim'
 
 "indentation plugin
 Plugin 'Yggdroot/indentLine'
@@ -168,6 +191,8 @@ Plugin 'NLKNguyen/papercolor-theme'
 
 " Rainbox parenthesis
 Plugin 'luochen1990/rainbow'
+
+Plugin 'mhinz/vim-startify'
 
 let fortran_free_source=1
 let fortran_do_enddo=1
@@ -221,6 +246,14 @@ nnoremap <C-F5> :bprevious!<Enter>
 nnoremap <C-F6> :bnext!<Enter>
 nnoremap <C-F4> :bp <BAR> bd #<Enter>
 
+" add shortcuts for vim exiting, saving
+inoremap <C-w> <esc>:w<cr>
+nnoremap <C-w> :w<cr>
+inoremap <C-e> <esc>:wq!<cr>
+nnoremap <C-e> :wq!<cr>
+inoremap <C-q> <esc>:q<cr>
+nnoremap <C-q> :q<cr>
+
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
 
@@ -229,6 +262,7 @@ colorscheme onedark
 set lazyredraw
 set textwidth=120
 set encoding=utf-8
+set fileencodings=utf-8,cp949
 set t_Co=256
 set term=xterm-256color
 set termencoding=utf-8
@@ -262,7 +296,7 @@ set list
 set nu
 set ic
 set cursorline
-"set cursorcolumn
+" set cursorcolumn
 set showmatch
 set wmnu
 set wrap
@@ -279,6 +313,7 @@ set statusline+=%F
 set splitbelow
 set splitright
 set clipboard=unnamed
+set virtualedit=onemore
 syntax enable
 filetype off
 filetype plugin indent on
@@ -299,6 +334,8 @@ set completeopt-=preview
 set complete-=i
 set ttyfast
 set ttyscroll=3
+
+set lisp ai
 
 " set relative line numbers
 set relativenumber
@@ -323,18 +360,31 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+" mapping for ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Enable folding
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
-set foldlevel=99
-let g:SimpylFold_docstring_preview=1
-
+set foldlevel=1
+" let g:SimpylFold_docstring_preview=1
 set foldmethod=marker
-set foldlevel=0
+" set foldmethod=syntax
 set modelines=1
+" set nofoldenable
+" zR - folding reduce all, zi toggles folding on/off
 
 if !has('nvim')
     set pastetoggle=<F2>
@@ -351,13 +401,20 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" change buffer split panes using arrows
+nnoremap <silent> <C-Right> <c-w>l
+nnoremap <silent> <C-Left> <c-w>h
+nnoremap <silent> <C-Up> <c-w>k
+nnoremap <silent> <C-Down> <c-w>j
+
 " use xnoremap to select line and move the entire line
 xnoremap K :move '<-2<CR>gv=gv
 xnoremap J :move '>+1<CR>gv=gv
 
 " add keymap for vertical and horizontal split
 " nmap <F5> :sp<CR>
-nmap <F4> :vsp<CR>
+" nmap <F4> :vsp<CR>
+nmap <F4> :SyntasticToggleMode<CR>
 
 " add keymap for current buffers
 nnoremap <F3> :buffers<CR>:buffer<Space>
@@ -388,7 +445,7 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 map <leader>l :NERDTreeFind<CR>
 
 " highlight cursorline and cursorcolumn
-hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
+hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
 " hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
 
 " proper PEP8 indentation for Python
@@ -412,6 +469,10 @@ autocmd FileType python nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1
 autocmd filetype c nnoremap <F9> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F9> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr>"
+autocmd FileType sh nnoremap <buffer> <F9> :exec '!source' shellescape(@%, 1)<cr>
+autocmd FileType go nnoremap <buffer> <F9> :exec '!go run' shellescape(@%, 1)<cr>
+autocmd FileType js nnoremap <buffer> <F9> :exec '!node' shellescape(@%, 1)<cr>
+autocmd FileType rb nnoremap <buffer> <F9> :exec '!ruby' shellescape(@%, 1)<cr>
 
 " customization by filetype
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
@@ -421,7 +482,7 @@ autocmd Filetype javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 " 2 spaces indenting
 au FileType haskell,lhaskell,yaml,clevercss,css,less,rst,javascript,htmljinja,html,htmldjango setlocal shiftwidth=2|setlocal softtabstop=2|setlocal tabstop=2
 
-" 4 space indenting
+" 4 space indentin
 au FileType python,scons setlocal shiftwidth=4|setlocal softtabstop=4|setlocal tabstop=4
 
 au FileType tex,latex setlocal linebreak
@@ -430,7 +491,7 @@ au FileType text setlocal linebreak|setlocal showbreak=\ \
 " 79 width
 au FileType python setlocal textwidth=79|setlocal colorcolumn=79
 au FileType rst setlocal textwidth=79|setlocal colorcolumn=79
-au FileType java setlocal textwidth=99|setlocal colorcolumn=99
+" au FileType java setlocal textwidth=99|setlocal colorcolumn=99
 au FileType cpp setlocal textwidth=79|setlocal colorcolumn=79
 au FileType c setlocal textwidth=79|setlocal colorcolumn=79
 highlight ColorColumn ctermbg=160 guibg=#D80000
@@ -450,20 +511,8 @@ set wildignore=*.pyc
 " Enable auto-complete for JavaScript
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-au BufNewFile *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-
-au BufNewFile *.js, *.html, *.css, *.json
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline=\ %c%l:v\ [%p]%=%a\ %h%m%r\ %F\ %t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 set statusline+=%*       "switch back to normal statusline highlight
 set statusline+=%#error# "switch to error highlight
@@ -482,6 +531,12 @@ set statusline+=/
 set statusline+=%{&ft} " Type (python).
 set statusline+=)
 set statusline+=\ (line\ %l\/%L,\ col\ %03c)
+
+" configs for syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 " improve mapping
 set completeopt=longest,menuone
@@ -512,9 +567,6 @@ hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
 " cleanup whitespace on save
 au BufWritePre * :%s/\s\+$//e
 au BufWritePre *.go :Fmt
-
-hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
-"hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=NONE "guibg=lightgrey guifg=white
 
 " add line to grey out comment section
 hi Comment ctermfg=6
@@ -554,28 +606,26 @@ autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
 " make jedi-vim use tabs
 let g:jedi#use_tabs_not_buffers = 1
 
-" Enable folding
-set foldenable
-set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent
-set foldlevel=99
-let g:SimplyFold_docstring_preview=1
-
-set foldmethod=marker
-set foldlevel=0
-set modelines=1
-
-" Wordprocessor mode
-func! WordProcessorMode()
- setlocal textwidth=80
- setlocal smartindent
- setlocal spell spelllang=en_us
- setlocal noexpandtab
-endfu
-
-" shortcut, use :WP
-com! WP call WordProcessorMode()
-
 " enable rainbow parethesis
 let g:rainbow_active = 1
+
+" automatically open specific file patterns for hexmode
+let g:hexmode_patterns = '*.bin,*.exe,*.dat,*.o'
+
+" allow silversearch-ag in vim
+let g:ackprg = 'ag --vimgrep'
+"let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" This will be a toggle switch to make vim transparent
+let t:is_transparent = 0
+function! Toggle_transparent()
+    if t:is_transparent == 0
+        hi Normal guibg=NONE ctermbg=NONE
+        let t:is_transparent = 1
+    else
+        set background=dark
+        let t:is_tranparent = 0
+    endif
+endfunction
+nnoremap <C-y> : call Toggle_transparent()<CR>
+

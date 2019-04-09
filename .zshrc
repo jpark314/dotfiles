@@ -1,5 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+# Always remember, use htop and when you try to stop a service, use
+# sudo systemctl disable/start/enable service.name
+# use start to temporarily start, use enable to start upon start
+# ex) jenkins.service, apache2, etc...
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/jpark/.oh-my-zsh
@@ -22,9 +27,8 @@ POWERLEVEL9K_NODE_VERSION_BACKGROUND='22'
 POWERLEVEL9K_NVM_BACKGROUND='28'
 POWERLEVEL9K_NVM_FOREGROUND='15'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context history dir node_version vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs load ram virtualenv rbenv rvm nvm time)
-# removed battery
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs virtualenv rbenv rvm nvm ssh load ram time history)
 
 POWERLEVEL9K_BATTERY_CHARGING='yellow'
 POWERLEVEL9K_BATTERY_CHARGED='green'
@@ -52,12 +56,18 @@ POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='white'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='red'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
 
 POWERLEVEL9K_RAM_BACKGROUND='blue'
 POWERLEVEL9K_RAM_FOREGROUND='white'
+
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='yellow'
+POWERLEVEL9K_VIRTUALENV_FOREGROUND='black'
+
+POWERLEVEL9K_RBENV_FOREGROUND='yellow'
+POWERLEVEL9K_RBENV_FOREGROUND='black'
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -150,10 +160,11 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# try to make tmux to run at default when terminal starts
+if [ "$TMUX" = "" ]; then tmux; fi
+
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/.local/bin/jupyter-notebook
-
-export PATH=/home/jpark/Downloads/swift-4.1.1-RELEASE-ubuntu16.10/usr/bin:$PATH
 
 export PATH=$PATH:/usr/local/go/bin
 
@@ -163,13 +174,31 @@ export PATH=$HOME/.node_modules_global/bin:$PATH
 
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 
+export PATH=/usr/share/swift/usr/bin:$PATH
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk.amd64/
+export PATH=$PATH:$JAVA_HOME
+
+export PATH=$HOME/Documents/julia-1.0.3/bin:$PATH
+
 #############################Customizations###################################
 source /home/jpark/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# sadly, lug server is dead now
 alias lugssh='ssh ssh.linux.ucla.edu -l ferris314'
 alias lugssh2='ssh linux.ucla.edu -l ferris314'
+alias pissh='ssh 192.168.1.100 -l pi'
 
-alias pissh='ssh raspberrypi.local -l pi'
+# Virtualbox - Ubuntu server
+alias ubuntu='VBoxManage startvm "ubuntu" --type headless'
+vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
+alias ubuntussh='ssh -p 2224 127.0.0.1 -l jpark'
+
+# Virtualbox - CentOS server
+alias centos='VBoxManage startvm "centos" --type headless'
+vshutdown() { VBoxManage controlvm "$1" acpipowerbutton; }
+alias centosssh='ssh -p 2223 127.0.0.1 -l jpark'
+
 
 alias chrome='google-chrome'
 
@@ -181,7 +210,7 @@ alias boottime='systemd-analyze time'
 
 alias joomscan='perl ~/Documents/joomscan/joomscan.pl'
 
-alias julia='source ~/Documents/julia-1.0.1/bin/julia'
+alias julia='~/Documents/julia-1.0.3/bin/julia'
 
 alias processing='source ~/Documents/processing-3.4/processing'
 
@@ -193,9 +222,44 @@ alias stk='sudo -i setoolkit'
 
 alias hacktools='source ~/Documents/scripts/hacktools.sh'
 
+alias gittools='source ~/Documents/scripts/gittools.sh'
+
 alias composer='php ~/composer.phar'
 
+alias prolog='swipl'
+
+alias erl='erlang'
+
+alias rust='rustc'
+
+alias gateway='ip route | grep default'
+
+alias checkip='curl -s http://whatismijnip.nl | cut -d " " -f 5'
+
+alias hx='hexdump'
+
+alias mos='mosquitto'
+
+alias pip3='python3 -m pip'
+
+alias el='exa'
+
+alias ell='exa --long'
+
+alias ela='exa --long --all'
+
+alias elg='exa --long --header --git'
+
+alias elga='exa --long --header --git --all'
+
+alias i3='ipython3'
+
+alias clock='lscpu | grep MHz'
+
+alias ytd='youtube-dl'
+
 # alias for enabling trackpoint settings under tmpfiles.d
+# it is located under ~/etc/tmpfiles.d/trackpoint.conf
 alias trackpoint='sudo systemd-tmpfiles --prefix=/sys --create'
 alias lua='lua5.3'
 alias luac='luac5.3'
@@ -219,6 +283,7 @@ alias diff='diff -u'
 alias cl='colorls'
 alias ll='ls -lv'
 alias la='ls -al'
+alias lh='ls -lh'
 alias du='du -hs'
 alias df='df -h'
 
@@ -263,8 +328,11 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
+export PATH="$HOME/anaconda3/bin:$PATH"
+
 alias tarzip='tar -czvf'
 alias untar='tar -xvzf'
+alias untarx='tar -xf' # untar tar.xz not gzip
 
 alias gor='go run'
 # Add path for golang
@@ -291,10 +359,17 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# Other plugins installed, fzf, ngrok, tig, jq, tmuxinator, fasd, xclip, lnav, ranger, realpath, ncdu, peco
+# Add path for linuxbrew
+# Until LinuxBrew is fixed, the following is required.
+# See: https://github.com/Homebrew/linuxbrew/issues/47
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:/usr/lib64/pkgconfig:/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib64/pkgconfig:/usr/share/pkgconfig:$PKG_CONFIG_PATH
+## Setup linux brew
+export LINUXBREWHOME=$HOME/.linuxbrew
+export PATH=$LINUXBREWHOME/bin:$PATH
+export MANPATH=$LINUXBREWHOME/man:$MANPATH
+export PKG_CONFIG_PATH=$LINUXBREWHOME/lib64/pkgconfig:$LINUXBREWHOME/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$LINUXBREWHOME/lib64:$LINUXBREWHOME/lib:$LD_LIBRARY_PATH
 
-# start tmux at startup
-#if [ -z "$TMUX" ]
-#then
-#  tmux attach -t TMUX || tmux new -s TMUX
-#fi
+# Other plugins installed, fzf, ngrok, tig, jq, tmuxinator, fasd, xclip, lnav, ranger, realpath, ncdu, peco
+# ripgrep, exa, duc and some hack tools, screen, binwalk, md(memtool) - u-boot package, sshfs
+
